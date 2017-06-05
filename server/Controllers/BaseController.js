@@ -5,22 +5,29 @@
 
 
 import {renderToString} from 'react-dom/server';
-import Layout from '../../src/components/Layout';
+import {combineReducers} from 'redux';
+import {createStore} from 'redux';
 import React from 'react';
-
+import All from '../../src';
+import * as reducers from '../../reducers/index';
 
 export default class BaseController {
-    constructor(app) {
-        this.app = app;
+    constructor() {
+        if (new.target === BaseController) {
+            throw new TypeError('Cannot construct Abstract instances directly');
+        }
     }
 
-    static renderReact(fullName, res, srcComp){
-        let component = React.createElement(
-            Layout,
-            {},
-            srcComp
-        );
-        res.render('index', {title: 'todo', routeFullName: fullName, ctnt: renderToString(component)});
+    static services() {
+    }
+
+    static routing() {
+    }
+
+    renderReact(res, defaultState) {
+        let store = createStore(combineReducers({...reducers,test: (state = false) => state}), {...defaultState, test:true}),
+            component = React.createElement(All(store));
+        res.render('index', {title: 'todo', content: renderToString(component), state: JSON.stringify(store.getState())});
     }
 
 }

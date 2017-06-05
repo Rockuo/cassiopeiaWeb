@@ -2,18 +2,17 @@
  * Created by rockuo on 29.5.17.
  */
 
-import React from 'react';
 import BaseController from './BaseController';
+import Home from '../../src/pages/Home';
 
 export default class HomeController extends BaseController {
 
-    indexAction(fullName, src, req, res) {
-        let component = React.createElement(
-            src,
-            {name: 'pepa'},
-            null
-        );
-        BaseController.renderReact(fullName,res,component);
+    static routing() {
+        return [{type:'get', route:'/',action: 'indexAction'}];
+    }
+
+    indexAction(req, res) {
+        this.renderReact(res, {page: Home.WrappedComponent.name});
     }
 
 

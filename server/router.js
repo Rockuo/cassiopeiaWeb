@@ -4,24 +4,25 @@
 'use strict';
 import _ from 'lodash';
 import * as Controllers from './Controllers';
-import routes from '../routes';
 import express from 'express';
 
 export default function(app) {
-    _.each(routes, (actions, controllerName) => {
-        let controller = new Controllers[controllerName](app);
-        _.each(actions, (actionSetting, actionName) => {
-            const router = express.Router();
-            router[actionSetting.type](actionSetting.route, function(req, res, next) {
-                controller[actionName + 'Action'](
-                    `${controllerName}.${actionName}`,
-                    actionSetting.src,
+
+    const router = express.Router();
+    let controllers = [];
+    _.each(Controllers, Controller => {
+        let args = [];
+        let instance = new Controller(...args);
+        controllers.push(instance);
+        _.each(Controller.routing(), settings => {
+            router[settings.type](settings.route, function(req, res, next) {
+                instance[settings.action](
                     req,
                     res,
                     next
                 );
             });
-            app.use(actionSetting.route , router);
         });
     });
+    app.use('/', router);
 }

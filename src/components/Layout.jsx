@@ -3,20 +3,19 @@
  */
 
 import React from 'react';
+
+import PropTypes from 'prop-types';
 import _ from 'lodash';
+import {menuItem} from './MiniItems.jsx';
 
 const containerStyle = {
     minHeight: 800 + 'px',
 };
 
-class Home extends React.Component {
+class Layout extends React.Component {
     render() {
-
-        let menuItems = _.map(
-            this.props.menuItems,
-            item => <li><a href={item.href}><i className={item.icon}/>{item.title}</a></li>
-            ),
-            topMenuItems = _.map(this.props.topMenuItems, item => <li><a href={item.href}>{item.title}</a></li>);
+        let menuItems = _.map(this.props.menuItems, menuItem),
+            topMenuItems = _.map(this.props.topMenuItems, menuItem);
 
         return <div className="templatemo-flex-row">
             <div className="templatemo-sidebar">
@@ -47,8 +46,6 @@ class Home extends React.Component {
                     <div style={containerStyle}>
                         {this.props.children}
                     </div>
-
-
                     <footer className="text-right">
                         <p>Copyright &copy; 2016 Rockuo
                             | Designed by <a href="http://www.templatemo.com" target="_parent">templatemo</a></p>
@@ -58,11 +55,18 @@ class Home extends React.Component {
         </div>;
     }
 }
+//
+Layout.propTypes = {
+    menuItems: PropTypes.arrayOf(PropTypes.shape({
+        href: PropTypes.string.isRequired,
+        icon: PropTypes.string,
+        title: PropTypes.string.isRequired
+    }).isRequired).isRequired
+};
 
-Home.defaultProps = {
+Layout.defaultProps = {
     mainHeader: 'Cassiopeia Pardubice',
     icon: <img src="/images/SKAUT_logo_obrys_bily.png" alt="Profile Photo" className="img-responsive"/>,
-    menuItems: [{href: 'index.html', icon: 'fa fa-home fa-fw', title: 'Dashboard'}],
-    toMenuItems: [{href: '#', title: 'something'}]
+    topMenuItems: [{href: '#', title: 'something'}]
 };
-export default Home;
+export default Layout;

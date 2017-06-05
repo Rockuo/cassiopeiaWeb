@@ -7,4 +7,6 @@ html
         link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
         link(href='/stylesheets/templatemo-style.css', rel='stylesheet')
     body
+        input(id='state', type='hidden', value=state)
         block content
+        script(src='/dist/app.bundle.js', type='text/javascript')

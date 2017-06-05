@@ -2,4 +2,4 @@
  * Created by rockuo on 29.5.17.
  */
 
-export {default as Home} from './HomeController';
+export {default as HomeController} from './HomeController';
