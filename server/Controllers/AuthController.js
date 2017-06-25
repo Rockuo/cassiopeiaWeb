@@ -45,10 +45,10 @@ export default class AuthController extends BaseController {
             if (!user) {
                 models.User.create({
                     username: req.body.username,
-                    firstName: req.body.username,
-                    lastName: req.body.username,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
                     password: bcrypt.hashSync(req.body.password),
-                    roles: JSON.stringify([])
+                    roles: JSON.stringify(['user'])
                 }).then(
                     () => passport.authenticate("local", {failureRedirect: "/signup", successRedirect: "/"})(req, res)
                 )

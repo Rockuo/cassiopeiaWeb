@@ -35,10 +35,10 @@ passport.use(new Strategy(function (username, pass, cb) {
         }
     }).then(
         (user, err) =>
-            err?
-                cb(err):
-                (!user || !bcrypt.compareSync(pass, user.password))?
-                    cb(null, false):
+            err ?
+                cb(err) :
+                (!user || !bcrypt.compareSync(pass, user.password)) ?
+                    cb(null, false) :
                     cb(null, user)
     )
 }));

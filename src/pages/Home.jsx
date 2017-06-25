@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 const Home = (props) => {
+    console.log(props.user);
     return <div>Hello {props.title}</div>;
 };
 

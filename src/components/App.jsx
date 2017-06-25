@@ -4,11 +4,10 @@
 
 import React from 'react';
 import Layout from './Layout.jsx';
-import menuItems from '../../server/menu';
 
 class App  extends React.Component{
     render(){
-        return <Layout menuItems={menuItems}>{this.props.children}</Layout>;
+        return <Layout {...this.props}>{this.props.children}</Layout>;
     }
 }
 export default App;

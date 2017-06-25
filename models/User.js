@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
         lastName: {type:DataTypes.STRING, allowNull: false},
         password: {type:DataTypes.STRING, allowNull: false},
         username: {type: DataTypes.STRING, unique: true},
-        role: {type:DataTypes.STRING, allowNull: true}
+        roles: {type:DataTypes.STRING, allowNull: false}
     };
 
     return sequelize.define('User',atributes);

@@ -10,6 +10,9 @@ import {createStore} from 'redux';
 import React from 'react';
 import All from '../../src';
 import * as reducers from '../../reducers/index';
+import menuItems from '../../src/menu';
+import topMenuItems from '../../src/topMenu';
+import topMenuItemsAdmin from '../../src/topMenuAdmin';
 
 export default class BaseController {
     constructor() {
@@ -24,14 +27,19 @@ export default class BaseController {
     static routing() {
     }
 
-    renderReact(req, res, defaultState) {
+    renderReact(req, res, defaultState, params = {menuItems: menuItems, topMenuItems: topMenuItems}) {
         let user = {};
-        if(req.user){
+
+        if (req.user) {
             user.username = req.user.username;
+            if(JSON.parse(req.user.roles).includes('admin')){
+                params.topMenuItems = topMenuItemsAdmin;
+            }
         }
 
         let store = createStore(
-            combineReducers({...reducers, test: (state = false) => state}), {...defaultState, user,test: true}
+            combineReducers({...reducers, test: (state = false) => state}),
+            {...defaultState, user, test: true, ...params}
             ),
             component = React.createElement(All(store));
 

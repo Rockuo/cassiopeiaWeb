@@ -3,7 +3,7 @@
  */
 
 const menu = [
-    {href: 'index.html', icon: 'fa fa-home fa-fw', title: 'Dashboard'}
+    {href: '/', icon: 'fa fa-home fa-fw', title: 'Hlavní strana'}
 ];
 
 export default menu;

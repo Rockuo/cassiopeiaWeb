@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 const SignIn = () =>
     <div>
-        <h2>Sign Up</h2>
+        <h2>Sign In</h2>
         <form method="post" action="/signin">
             <input type="text" name="username" placeholder="Username"/>
             <input type="password" name="password" placeholder="password"/>

@@ -5,3 +5,5 @@
 
 export const page = (state = '') => state;
 export const user = (state = '') => state;
+export const menuItems = (state = []) => state;
+export const topMenuItems = (state = []) => state;

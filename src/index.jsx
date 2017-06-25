@@ -3,7 +3,14 @@ import {Provider} from 'react-redux';
 import App from './components/App.jsx';
 import * as pages from './pages';
 
-export default  (store) => () => {
-    const Page = pages[store.getState().page];
-    return <Provider store={store}><App><Page/></App></Provider>;
+export default  (store) => (props) => {
+    const state = store.getState(),
+        Page = pages[state.page];
+    console.log(state.page);
+    console.log(pages);
+    return <Provider store={store}>
+        <App {...props} menuItems={state.menuItems} topMenuItems={state.topMenuItems}>
+            <Page/>
+        </App>
+    </Provider>;
 };

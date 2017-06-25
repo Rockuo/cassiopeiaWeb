@@ -14,6 +14,9 @@ const containerStyle = {
 
 class Layout extends React.Component {
     render() {
+        if(typeof window !== 'undefined'){
+            window.a =this;
+        }
         let menuItems = _.map(this.props.menuItems, menuItem),
             topMenuItems = _.map(this.props.topMenuItems, menuItem);
 
@@ -23,7 +26,7 @@ class Layout extends React.Component {
                     <h1>{this.props.mainHeader}</h1>
                 </header>
                 <div className="profile-photo-container">
-                    {this.props.icon}
+                    {this.props.logo}
                 </div>
                 <div className="mobile-menu-icon">
                     <i className="fa fa-bars"/>
@@ -66,7 +69,8 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
     mainHeader: 'Cassiopeia Pardubice',
-    icon: <img src="/images/SKAUT_logo_obrys_bily.png" alt="Profile Photo" className="img-responsive"/>,
-    topMenuItems: [{href: '#', title: 'something'}]
+    logo: <img src="/images/SKAUT_logo_obrys_bily.png" alt="Profile Photo" className="img-responsive"/>,
+    topMenuItems: [{href: '#', title: 'something'}],
+    menuItems: [{href: '#', title: 'something'}]
 };
 export default Layout;
