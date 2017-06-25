@@ -12,7 +12,7 @@ export default class HomeController extends BaseController {
     }
 
     indexAction(req, res) {
-        this.renderReact(res, {page: Home.WrappedComponent.name});
+        this.renderReact(req, res, {page: Home.WrappedComponent.name});
     }
 
 

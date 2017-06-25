@@ -4,3 +4,4 @@
 
 
 export const page = (state = '') => state;
+export const user = (state = '') => state;

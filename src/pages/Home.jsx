@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = (state) => {
-    return {title: 'pepa'};
+    return {title: 'pepa', user: state.user};
 };
 
 const Home = (props) => {

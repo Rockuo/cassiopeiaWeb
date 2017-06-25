@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+    h2 Sign Up
+    form(method='post', action='/signup')
+        input(type='text', name='username', placeholder='Username')
+        input(type='password', name='password', placeholder='password')
+        button Sign Up

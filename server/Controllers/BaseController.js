@@ -24,10 +24,22 @@ export default class BaseController {
     static routing() {
     }
 
-    renderReact(res, defaultState) {
-        let store = createStore(combineReducers({...reducers,test: (state = false) => state}), {...defaultState, test:true}),
+    renderReact(req, res, defaultState) {
+        let user = {};
+        if(req.user){
+            user.username = req.user.username;
+        }
+
+        let store = createStore(
+            combineReducers({...reducers, test: (state = false) => state}), {...defaultState, user,test: true}
+            ),
             component = React.createElement(All(store));
-        res.render('index', {title: 'todo', content: renderToString(component), state: JSON.stringify(store.getState())});
+
+        res.render('index', {
+            title: 'todo',
+            content: renderToString(component),
+            state: JSON.stringify(store.getState())
+        });
     }
 
 }
