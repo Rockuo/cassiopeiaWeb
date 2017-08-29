@@ -8,7 +8,9 @@ import Home from '../../src/pages/Home';
 export default class HomeController extends BaseController {
 
     static routing() {
-        return [{type:'get', route:'/',action: 'indexAction'}];
+        return {
+            cassiopeia_home: {type:'get', route:'/',action: 'indexAction'}
+        };
     }
 
     indexAction(req, res) {

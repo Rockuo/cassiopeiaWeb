@@ -53,7 +53,7 @@ export default class AuthController extends BaseController {
                     () => passport.authenticate("local", {failureRedirect: "/signup", successRedirect: "/"})(req, res)
                 )
             } else {
-                res.send("user exists")
+                // todo
             }
         })
     }

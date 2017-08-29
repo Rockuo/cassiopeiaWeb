@@ -12,7 +12,6 @@ import bcrypt from 'bcrypt-nodejs';
 const Strategy = require('passport-local').Strategy;
 let app = express();
 
-
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
@@ -35,26 +34,9 @@ passport.use(new Strategy(function (username, pass, cb) {
         }
     }).then(
         (user, err) =>
-            err ?
-                cb(err) :
-                (!user || !bcrypt.compareSync(pass, user.password)) ?
-                    cb(null, false) :
-                    cb(null, user)
+            err ? cb(err) : (!user || !bcrypt.compareSync(pass, user.password)) ? cb(null, false) : cb(null, user)
     )
 }));
-// function (user, err) {
-//     // return err?cb(err):(!user):
-//     if (err) {
-//         return cb(err);
-//     }
-//     if (!user || !bcrypt.compareSync(pass, user.password)) {
-//         return cb(null, false);
-//     }
-//     if (!bcrypt.compareSync(pass, user.password)) {
-//         return cb(null, false);
-//     }
-//     return cb(null, user);
-// }
 
 passport.serializeUser(function (user, cb) {
     cb(null, user.id);

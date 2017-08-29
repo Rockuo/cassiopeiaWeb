@@ -10,6 +10,7 @@ import All from '../src/index.jsx';
 import * as reducers from '../reducers/index';
 
 
+global.isFrontend = true;
 const preLoadedState = JSON.parse(document.getElementById('state').value);
 let store = createStore(combineReducers({...reducers,test: (state = false) => state}), preLoadedState),
     component = React.createElement(All(store));

@@ -13,6 +13,11 @@ import * as reducers from '../../reducers/index';
 import menuItems from '../../src/menu';
 import topMenuItems from '../../src/topMenu';
 import topMenuItemsAdmin from '../../src/topMenuAdmin';
+import topMenuItemsSigned from '../../src/topMenuSigned';
+import _ from 'lodash';
+import {ROLE_ADMIN} from '../roles';
+
+const defaults = {menuItems: menuItems, topMenuItems: topMenuItems, pageData: {}};
 
 export default class BaseController {
     constructor() {
@@ -27,13 +32,21 @@ export default class BaseController {
     static routing() {
     }
 
-    renderReact(req, res, defaultState, params = {menuItems: menuItems, topMenuItems: topMenuItems}) {
+    renderReact(req, res, defaultState, params = {}) {
+        params = _.defaultsDeep(params, defaults);
         let user = {};
 
+        // todo <remove>
+        params.topMenuItems = topMenuItemsAdmin;
+        params.topMenuItems = params.topMenuItems.concat(topMenuItemsSigned);
+        // todo </remove>
         if (req.user) {
             user.username = req.user.username;
-            if(JSON.parse(req.user.roles).includes('admin')){
+            if(req.user.roles){
                 params.topMenuItems = topMenuItemsAdmin;
+                params.topMenuItems = params.topMenuItems.concat(topMenuItemsSigned);
+            } else {
+                params.topMenuItems = topMenuItemsSigned;
             }
         }
 

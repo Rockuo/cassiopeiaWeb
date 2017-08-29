@@ -8,10 +8,11 @@ module.exports = {
         db.User.sync()
             .then(db.Event.sync())
             .then(db.Info.sync())
-            .then(db.Photo.sync());
+            .then(db.Contact.sync())
+            // .then(db.Photo.sync());
     },
 
     down: () => {
-        db.Event.drop().then(db.User.drop()).then(db.Info.drop()).then(db.Photo.drop());
+        db.Event.drop().then(db.User.drop()).then(db.Info.drop()).then(db.Contact.drop()).then(db.Photo.drop());
     }
 };

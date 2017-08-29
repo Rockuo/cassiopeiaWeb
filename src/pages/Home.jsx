@@ -11,8 +11,9 @@ const mapStateToProps = (state) => {
 };
 
 const Home = (props) => {
-    console.log(props.user);
-    return <div>Hello {props.title}</div>;
+    return <div>
+        <h1>{props.title}</h1>
+    </div>;
 };
 
 export default connect(mapStateToProps)(Home);

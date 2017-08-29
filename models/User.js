@@ -8,5 +8,16 @@ module.exports = function(sequelize, DataTypes) {
         roles: {type:DataTypes.STRING, allowNull: false}
     };
 
-    return sequelize.define('User',atributes);
+    return sequelize.define('User',atributes, {
+        getterMethods: {
+            roles() {
+                return JSON.parse(this.getDataValue('roles'));
+            }
+        },
+        setterMethods: {
+            roles(value) {
+                this.setDataValue('roles', JSON.stringify(value));
+            },
+        }
+    });
 };

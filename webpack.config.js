@@ -20,6 +20,10 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 options: {presets: ['es2015', 'stage-2', 'react'], plugins: ['transform-object-rest-spread']}
+            },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
             }
         ]
     }

@@ -19,7 +19,7 @@ export default function(app) {
                 let found = true;
                 if(settings.roles){
                     if(req.user) {
-                        let roles = JSON.parse(req.user.roles);
+                        let roles = req.user.roles;
                         _.each(settings.roles, role => {
                             if(!roles.includes(role)){
                                 found = false;
@@ -46,3 +46,4 @@ export default function(app) {
     });
     app.use('/', router);
 }
+

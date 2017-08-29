@@ -4,10 +4,9 @@
 
 const topMenuAdmin = [
     {href: '/manage/users', title: 'Uživatelé'},
-    {href: '/manage/infos', title: 'Info'},
-    {href: '/manage/Events', title: 'Akce'},
-    {href: '/manage/photos', title: 'Fotky'},
-    {href: '/signout', title: 'Odhlásit'},
+    {href: '/manage/info', title: 'Info'},
+    {href: '/manage/event', title: 'Akce'},
+    // {href: '/manage/photo', title: 'Fotky'},
 ];
 
 export default topMenuAdmin;

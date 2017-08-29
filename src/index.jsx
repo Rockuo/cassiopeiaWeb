@@ -6,8 +6,7 @@ import * as pages from './pages';
 export default  (store) => (props) => {
     const state = store.getState(),
         Page = pages[state.page];
-    console.log(state.page);
-    console.log(pages);
+    console.log(`PAGE: ${state.page}`);
     return <Provider store={store}>
         <App {...props} menuItems={state.menuItems} topMenuItems={state.topMenuItems}>
             <Page/>

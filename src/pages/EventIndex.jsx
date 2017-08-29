@@ -7,13 +7,12 @@ import { connect } from 'react-redux';
 import {grid} from '../components/MiniItems.jsx';
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return state.pageData;
 };
 
 
-const UserIndex = (props) => {
+const EventIndex = (props) => {
     return <div>{grid(props.rows || [])}</div>;
 };
 
-export default connect(mapStateToProps)(UserIndex);
+export default connect(mapStateToProps)(EventIndex);

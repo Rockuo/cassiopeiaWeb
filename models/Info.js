@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
     const atributes = {
-        title: DataTypes.STRING,
+        title: {type: DataTypes.STRING, unique: true},
         type: DataTypes.STRING,
         text: DataTypes.TEXT,
         section: DataTypes.STRING,
