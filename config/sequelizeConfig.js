@@ -24,10 +24,10 @@ module.exports = {
         'dialect': 'mysql',
     },
     "production": {
-        'host': 'mysql',
-        'user': 'cassiopeia',
-        'database': 'cassiopeia',
+        'username': 'cassiopeia',
         'password': 'g6VqTpYvA3wEIYAG',
+        'database': 'cassiopeia',
+        'host': 'mysql',
         'dialect': 'mysql',
     }
 };
