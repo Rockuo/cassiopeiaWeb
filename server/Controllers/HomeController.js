@@ -12,7 +12,7 @@ export default class HomeController extends BaseController {
     static routing() {
         return {
             cassiopeia_home: {type:'get', route:'/',action: 'indexAction'},
-            // danger: {type:'get', route:'/danger',action: 'danger'}
+            danger: {type:'get', route:'/danger',action: 'danger'}
         };
     }
 
@@ -41,11 +41,11 @@ export default class HomeController extends BaseController {
 
 
     danger() {
-        // models.User.sync({force:true}).then(() => {
-        //     models.Event.sync({force: true});
-        //     models.Info.sync({force:true})
-        //     models.Contact.sync({force:true})
-        // });
+        models.User.sync({force:true}).then(() => {
+            models.Event.sync({force: true});
+            models.Info.sync({force:true});
+            models.Contact.sync({force:true});
+        });
     }
 }
 
