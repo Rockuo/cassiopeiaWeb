@@ -15,11 +15,11 @@ export default class EventsManagerController extends BaseController {
 
     static routing() {
         return {
-            event_index :{type:'get', route:'/manage/event', action: 'indexAction'},// roles: [ROLE_ADMIN]}, todo
-            event_new :{type:'get', route:'/manage/event/new', action: 'newAction'},// roles: [ROLE_ADMIN]}, todo
-            event_create :{type:'post', route:'/manage/event/create', action: 'createAction'},// roles: [ROLE_ADMIN]}, todo
-            event_edit :{type:'get', route:'/manage/event/:eventId', action: 'editAction'},// roles: [ROLE_ADMIN]} todo
-            event_update :{type:'post', route:'/manage/event/:eventId', action: 'updateAction'},// roles: [ROLE_ADMIN]} todo
+            event_index :{type:'get', route:'/manage/event', action: 'indexAction',roles: [ROLE_ADMIN]},
+            event_new :{type:'get', route:'/manage/event/new', action: 'newAction',roles: [ROLE_ADMIN]},
+            event_create :{type:'post', route:'/manage/event/create', action: 'createAction',roles: [ROLE_ADMIN]},
+            event_edit :{type:'get', route:'/manage/event/:eventId', action: 'editAction',roles: [ROLE_ADMIN]},
+            event_update :{type:'post', route:'/manage/event/:eventId', action: 'updateAction',roles: [ROLE_ADMIN]}
         };
     }
 

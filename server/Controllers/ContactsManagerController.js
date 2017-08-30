@@ -14,11 +14,11 @@ export default class ContactsManagerController extends BaseController {
 
     static routing() {
         return {
-            contact_index :{type:'get', route:'/manage/contact', action: 'indexAction'},// roles: [ROLE_ADMIN]}, todo
-            contact_new :{type:'get', route:'/manage/contact/new', action: 'newAction'},// roles: [ROLE_ADMIN]}, todo
-            contact_create :{type:'post', route:'/manage/contact/create', action: 'createAction'},// roles: [ROLE_ADMIN]}, todo
-            contact_edit :{type:'get', route:'/manage/contact/:contactId', action: 'editAction'},// roles: [ROLE_ADMIN]} todo
-            contact_update :{type:'post', route:'/manage/contact/:contactId', action: 'updateAction'},// roles: [ROLE_ADMIN]} todo
+            contact_index :{type:'get', route:'/manage/contact', action: 'indexAction', roles: [ROLE_ADMIN]},
+            contact_new :{type:'get', route:'/manage/contact/new', action: 'newAction',roles: [ROLE_ADMIN]},
+            contact_create :{type:'post', route:'/manage/contact/create', action: 'createAction',roles: [ROLE_ADMIN]},
+            contact_edit :{type:'get', route:'/manage/contact/:contactId', action: 'editAction', roles: [ROLE_ADMIN]},
+            contact_update :{type:'post', route:'/manage/contact/:contactId', action: 'updateAction',roles: [ROLE_ADMIN]}
         };
     }
 

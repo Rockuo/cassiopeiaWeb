@@ -15,11 +15,19 @@ module.exports = {
     //     'host': '127.0.0.1',
     //     'dialect': 'mysql'
     // },
+
     'development': {
         'username': 'root',
         'password': 'mypassword',
         'database': 'testing',
         'host': '127.0.0.1',
+        'dialect': 'mysql',
+    },
+    "production": {
+        'host': 'mysql',
+        'user': 'cassiopeia',
+        'database': 'cassiopeia',
+        'password': 'g6VqTpYvA3wEIYAG',
         'dialect': 'mysql',
     }
 };

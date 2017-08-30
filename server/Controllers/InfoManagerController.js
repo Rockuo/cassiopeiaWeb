@@ -14,11 +14,11 @@ export default class InfoManagerController extends BaseController {
 
     static routing() {
         return {
-            info_index :{type:'get', route:'/manage/info', action: 'indexAction'},// roles: [ROLE_ADMIN]}, todo
-            info_new :{type:'get', route:'/manage/info/new', action: 'newAction'},// roles: [ROLE_ADMIN]}, todo
-            info_create :{type:'post', route:'/manage/info/create', action: 'createAction'},// roles: [ROLE_ADMIN]}, todo
-            info_edit :{type:'get', route:'/manage/info/:infoId', action: 'editAction'},// roles: [ROLE_ADMIN]} todo
-            info_update :{type:'post', route:'/manage/info/:infoId', action: 'updateAction'},// roles: [ROLE_ADMIN]} todo
+            info_index :{type:'get', route:'/manage/info', action: 'indexAction', roles: [ROLE_ADMIN]},
+            info_new :{type:'get', route:'/manage/info/new', action: 'newAction', roles: [ROLE_ADMIN]},
+            info_create :{type:'post', route:'/manage/info/create', action: 'createAction', roles: [ROLE_ADMIN]},
+            info_edit :{type:'get', route:'/manage/info/:infoId', action: 'editAction', roles: [ROLE_ADMIN]},
+            info_update :{type:'post', route:'/manage/info/:infoId', action: 'updateAction', roles: [ROLE_ADMIN]},
         };
     }
 

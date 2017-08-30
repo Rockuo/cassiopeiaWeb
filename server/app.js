@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import setRoutes from './router';
 import '../src/index';
+import '../src/index';
 import passport from 'passport';
 import models from '../models';
 import bcrypt from 'bcrypt-nodejs';

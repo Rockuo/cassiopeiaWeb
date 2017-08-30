@@ -36,10 +36,7 @@ export default class BaseController {
         params = _.defaultsDeep(params, defaults);
         let user = {};
 
-        // todo <remove>
-        params.topMenuItems = topMenuItemsAdmin;
-        params.topMenuItems = params.topMenuItems.concat(topMenuItemsSigned);
-        // todo </remove>
+        console.log(req.user);
         if (req.user) {
             user.username = req.user.username;
             if(req.user.roles){

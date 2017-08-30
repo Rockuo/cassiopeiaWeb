@@ -9,15 +9,16 @@ import models from '../../models';
 import _ from 'lodash';
 import * as roles from '../roles';
 import bcrypt from 'bcrypt-nodejs';
+import {ROLE_ADMIN} from '../roles';
 
 
 export default class UserManagerController extends BaseController {
 
     static routing() {
         return {
-            user_index :{type:'get', route:'/manage/users', action: 'indexAction'},// roles: [ROLE_ADMIN]}, todo
-            user_edit :{type:'get', route:'/manage/users/:userId', action: 'editAction'},// roles: [ROLE_ADMIN]} todo
-            user_update :{type:'post', route:'/manage/users/:userId', action: 'updateAction'},// roles: [ROLE_ADMIN]} todo
+            user_index :{type:'get', route:'/manage/users', action: 'indexAction', roles: [ROLE_ADMIN]},
+            user_edit :{type:'get', route:'/manage/users/:userId', action: 'editAction', roles: [ROLE_ADMIN]},
+            user_update :{type:'post', route:'/manage/users/:userId', action: 'updateAction', roles: [ROLE_ADMIN]},
         };
     }
 
