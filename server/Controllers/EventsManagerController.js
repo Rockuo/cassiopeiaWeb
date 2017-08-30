@@ -6,6 +6,7 @@ import BaseController from './BaseController';
 import EventIndex from '../../src/pages/EventIndex';
 import EventEdit from '../../src/pages/EventEdit';
 import models from '../../models';
+import moment from 'moment';
 import _ from 'lodash';
 import {ROLE_ADMIN} from '../roles';
 
@@ -46,6 +47,8 @@ export default class EventsManagerController extends BaseController {
             type: req.body.type,
             text: req.body.text,
             section: req.body.section,
+            begin: moment(req.body.begin).unix()*1000,
+            end: moment(req.body.end).unix()*1000,
             UserId: req.user && req.user.id || 1
         }).then(event => res.redirect(`/manage/event/${event.id}`));
     }
@@ -82,6 +85,8 @@ export default class EventsManagerController extends BaseController {
                 event.type = req.body.type;
                 event.text = req.body.text;
                 event.section = req.body.section;
+                event.begin = moment(req.body.begin).unix()*1000;
+                event.end = moment(req.body.end).unix()*1000;
                 event.save().then(() => res.redirect(`/manage/event/${event.id}`));
             } else {
                 // todo

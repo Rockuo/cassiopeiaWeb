@@ -4,6 +4,8 @@ module.exports = function(sequelize, DataTypes) {
         title: DataTypes.STRING,
         type: DataTypes.STRING,
         text: DataTypes.TEXT,
+        begin: DataTypes.DATE,
+        end: DataTypes.DATE,
         section: DataTypes.STRING,
     };
 

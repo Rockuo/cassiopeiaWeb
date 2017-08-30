@@ -8,7 +8,7 @@ const menu = [
     {href: '/info', icon: 'fa fa-home fa-fw', title: 'Informace'},
     {href: '/event', icon: 'fa fa-home fa-fw', title: 'Akce'},
     // {href: '/', icon: 'fa fa-home fa-fw', title: 'Tábory'},
-    {href: '#4', icon: 'fa fa-home fa-fw', title: 'Kontakty'}
+    {href: '/contact', icon: 'fa fa-home fa-fw', title: 'Kontakty'}
 ];
 
 export default menu;

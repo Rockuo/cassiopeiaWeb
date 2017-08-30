@@ -5,14 +5,20 @@
 let db = require('../models/index');
 module.exports = {
     up: () => {
-        db.User.sync()
-            .then(db.Event.sync())
-            .then(db.Info.sync())
-            .then(db.Contact.sync())
+        console.log('up-..........');
+        db.User.sync({force:true}).then(() => {
+            db.Event.sync({force: true});
+            db.Info.sync({force:true})
+            db.Contact.sync({force:true})
+        });
+        // db.User.sync({force:true}).then(console.log('user'));
+        // db.Event.sync({force:true}).then(console.log('event'));
+        // db.Info.sync({force:true}).then(console.log('info'));
+        // db.Contact.sync({force:true}).then(console.log('contact'));
             // .then(db.Photo.sync());
     },
 
     down: () => {
-        db.Event.drop().then(db.User.drop()).then(db.Info.drop()).then(db.Contact.drop()).then(db.Photo.drop());
+        db.Event.drop().then(db.User.drop()).then(db.Info.drop()).then(db.Contact.drop());
     }
 };
