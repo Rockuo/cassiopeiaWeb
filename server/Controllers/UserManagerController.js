@@ -7,7 +7,7 @@ import UserIndex from '../../src/pages/UserIndex';
 import UserEdit from '../../src/pages/UserEdit';
 import models from '../../models';
 import _ from 'lodash';
-import {ROLE_ADMIN} from '../roles';
+import * as roles from '../roles';
 import bcrypt from 'bcrypt-nodejs';
 
 
@@ -61,8 +61,9 @@ export default class UserManagerController extends BaseController {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 if(data.roles) {
-                    user.roles = [data.roles]
+                    user.roles = [data.roles];
                 }
+                console.log(user.roles);
                 if(data.password) {
                     user.password = bcrypt.hashSync(data.password)
                 }
@@ -73,7 +74,7 @@ export default class UserManagerController extends BaseController {
                 }).then( founded => {
                     if (!founded || user.username === data.username) {
                         user.username = data.username;
-                        founded.save().then(() => this.renderForm(req, res, user));
+                        user.save().then(() => this.renderForm(req, res, user));
                     } else {
                         //todo
                     }
@@ -89,8 +90,8 @@ export default class UserManagerController extends BaseController {
         this.renderReact(req, res, {page: UserEdit.WrappedComponent.name}, {
             pageData: {
                 user,
+                roles,
                 action: '/manage/users/',
-                roles: [ROLE_ADMIN]
             }
         })
     }

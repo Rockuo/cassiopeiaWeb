@@ -4,7 +4,9 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {grid} from '../components/MiniItems.jsx';
+import {routeGenerator} from '../../Libraries/tools';
+import Grid from '../components/Grid.jsx';
+import _ from 'lodash';
 
 const mapStateToProps = (state) => {
     return state.pageData;
@@ -12,7 +14,23 @@ const mapStateToProps = (state) => {
 
 
 const InfoIndex = (props) => {
-    return <div>{grid(props.rows || [])}</div>;
+    let rows = [];
+    _.each(props.rows, row => {
+        rows.push({
+            title: row.title,
+            type: row.type,
+            detail: <a href={routeGenerator(props.routeTemplate, {infoId: row.id})}>Editovat</a>
+        });
+    });
+    let columns = [
+        {key: 'title', name: 'Název'},
+        {key: 'type', name: 'Typ'},
+        {key: 'detail', name: ''},
+    ];
+    return <div>
+        <a className="templatemo-blue-button" href={props.newInfo}>Vytvořit</a>
+        <div style={{paddingTop: '10px'}}><Grid columns={columns} rows={rows}/></div>
+    </div>;
 };
 
 export default connect(mapStateToProps)(InfoIndex);

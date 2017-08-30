@@ -14,6 +14,9 @@ const mapStateToProps = (state) => {
 const ShowInfoShow = ({info}) => {
     return <div>
         <h2 className="margin-bottom-10">{info.title}</h2>
+        <hr/>
+        <span style={{fontSize: 15}}>Typ:</span> <span>{info.type}</span> <br/>
+        <hr/>
         <div dangerouslySetInnerHTML={{__html: info.text}}/>
     </div>;
 };

@@ -17,8 +17,11 @@ const ShowEventShow = ({event}) => {
 
     return <div>
         <h2 className="margin-bottom-10">{event.title}</h2>
+        <hr/>
+        <span style={{fontSize: 15}}>Typ:</span> <span>{event.type}</span> <br/>
         <span style={{fontSize: 15}}>Od:</span> <span>{`${begin.getDate()}.${begin.getMonth()}.${begin.getFullYear()} ${begin.getHours()}:${begin.getMinutes()}`}</span> <br/>
         <span style={{fontSize: 15}}>Do:</span> <span>{`${end.getDate()}.${end.getMonth()}.${end.getFullYear()} ${end.getHours()}:${end.getMinutes()}`}</span>
+        <hr/>
         <div dangerouslySetInnerHTML={{__html: event.text}}/>
     </div>;
 };

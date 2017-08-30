@@ -42,7 +42,7 @@ class ContactEdit extends React.Component {
         >
             {({values}) => {
                 return <form action={this.props.action} method="POST">
-                    <h6>Atribut: hodnota (enter) atribut2: hodnota (enter)...</h6>
+                    <h6>Obsah</h6>
                     <Textarea field='contactAttributes'  name="contactAttributes"  style={areaStyle}/>
                     {quill}
                     <button type="submit">Uložit</button>

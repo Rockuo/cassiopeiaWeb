@@ -11,3 +11,4 @@ export {default as InfoController} from './InfoController';
 export {default as EventController} from './EventController';
 export {default as ContactsManagerController} from './ContactsManagerController';
 export {default as ContactController} from './ContactController';
+export {default as CampController} from './CampController';

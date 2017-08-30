@@ -67,7 +67,7 @@ class InfoEdit extends React.Component {
                     <h6>Typ</h6>
                     <Text field='type' name="type"/>
                     <h6>Sekce</h6>
-                    <Text field='section' name="section"/>
+                    <Text field='section' name="section"/> (pokud použijete CAMP, přiřadí se info do táborů)
                     <h6>Text:</h6>
                     <Textarea field='text' name="text" style={areaStyle}/>
                     {quill}

@@ -3,16 +3,15 @@
  */
 
 import BaseController from './BaseController';
-import Home from '../../src/pages/Home';
+import ShowCampIndex from '../../src/pages/ShowCampIndex.jsx';
 import {InfoController, EventController} from './index';
 import models from '../../models';
 
-export default class HomeController extends BaseController {
+export default class CampController extends BaseController {
 
     static routing() {
         return {
-            cassiopeia_home: {type:'get', route:'/',action: 'indexAction'},
-            // danger: {type:'get', route:'/danger',action: 'danger'}
+            show_camp_index: {type:'get', route:'/camp',action: 'indexAction'},
         };
     }
 
@@ -22,30 +21,27 @@ export default class HomeController extends BaseController {
             events: {routeTemplate: EventController.routing().show_event_show.route}
         };
         models.Info.findAll({
+            where: {
+                section: 'CAMP'
+            },
             order: '"createdAt" DESC'
         }).then(infos => {
             pageData.infos.rows = infos;
             models.Event.findAll({
+                where: {
+                    section: 'CAMP'
+                },
                 order: '"createdAt" DESC'
             }).then(events => {
                 pageData.events.rows = events;
                 this.renderReact(
                     req,
                     res,
-                    {page: Home.WrappedComponent.name},
+                    {page: ShowCampIndex.WrappedComponent.name},
                     {pageData}
                 );
             });
         });
-    }
-
-
-    danger() {
-        // models.User.sync({force:true}).then(() => {
-        //     models.Event.sync({force: true});
-        //     models.Info.sync({force:true})
-        //     models.Contact.sync({force:true})
-        // });
     }
 }
 

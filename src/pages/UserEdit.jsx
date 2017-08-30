@@ -21,10 +21,11 @@ const UserEdit = (props) => {
             firstName: props.user.firstName,
             lastName: props.user.lastName,
             username: props.user.username,
-            roles: props.user.roles,
+            roles: props.user.roles[0],
         }}
     >
         {({values}) => {
+            console.log(values);
             let options = _.map(props.roles, role => <option key={role} value={role}>{role}</option>);
             return <form action={props.action+props.user.id} method="POST" onSubmit={false}>
                 <h6>Uživatelské jméno:</h6>
@@ -36,7 +37,7 @@ const UserEdit = (props) => {
                 <h6>Příjmení:</h6>
                 <Text field='lastName' name="lastName"/>
                 <h6>Práva:</h6>
-                <select name="roles">
+                <select name="roles" defaultValue={values.roles}>
                     {options}
                 </select><br/>
                 <button type="submit">Uložit</button>

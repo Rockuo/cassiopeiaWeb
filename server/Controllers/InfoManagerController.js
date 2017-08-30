@@ -25,7 +25,9 @@ export default class InfoManagerController extends BaseController {
     indexAction(req, res) {
         models.Info.findAll().then( rows => {
             let pageData = {
-                rows: _.map(rows, info => { return {href: `/manage/info/${info.id}`, value: info.title};})
+                rows: rows,
+                routeTemplate: InfoManagerController.routing().info_edit.route,
+                newInfo: InfoManagerController.routing().info_new.route
             };
             this.renderReact(req, res, {page: InfoIndex.WrappedComponent.name}, {pageData});
         });

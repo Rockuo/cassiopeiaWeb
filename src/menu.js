@@ -7,7 +7,7 @@ const menu = [
     {href: '/', icon: 'fa fa-home fa-fw', title: 'Hlavní strana'},
     {href: '/info', icon: 'fa fa-home fa-fw', title: 'Informace'},
     {href: '/event', icon: 'fa fa-home fa-fw', title: 'Akce'},
-    // {href: '/', icon: 'fa fa-home fa-fw', title: 'Tábory'},
+    {href: '/camp', icon: 'fa fa-home fa-fw', title: 'Tábory'},
     {href: '/contact', icon: 'fa fa-home fa-fw', title: 'Kontakty'}
 ];
 

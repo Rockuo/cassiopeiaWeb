@@ -25,7 +25,9 @@ export default class ContactsManagerController extends BaseController {
     indexAction(req, res) {
         models.Contact.findAll().then( rows => {
             let pageData = {
-                rows: _.map(rows, contact => { return {href: `/manage/contact/${contact.id}`, value: contact.id};})
+                rows: rows,
+                routeTemplate: ContactsManagerController.routing().contact_edit.route,
+                newContact: ContactsManagerController.routing().contact_new.route
             };
             this.renderReact(req, res, {page: ContactIndex.WrappedComponent.name}, {pageData});
         });

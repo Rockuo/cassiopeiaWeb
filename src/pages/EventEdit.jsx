@@ -77,7 +77,7 @@ class EventEdit extends React.Component {
                     <h6>Typ</h6>
                     <Text field='type' name="type"/>
                     <h6>Sekce</h6>
-                    <Text field='section' name="section"/>
+                    <Text field='section' name="section"/> (pokud použijete CAMP, přiřadí se akce do táborů)
                     <h6>Začátek</h6>
                     <DateTime inputProps={{name: 'begin'}} value={this.state.begin} onChange={this.handleBeginChange}/>
                     <h6>Konec</h6>

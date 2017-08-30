@@ -26,7 +26,9 @@ export default class EventsManagerController extends BaseController {
     indexAction(req, res) {
         models.Event.findAll().then( rows => {
             let pageData = {
-                rows: _.map(rows, event => { return {href: `/manage/event/${event.id}`, value: event.title};})
+                rows: rows,
+                routeTemplate: EventsManagerController.routing().event_edit.route,
+                newEvent: EventsManagerController.routing().event_new.route
             };
             this.renderReact(req, res, {page: EventIndex.WrappedComponent.name}, {pageData});
         });

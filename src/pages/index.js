@@ -18,4 +18,5 @@ export {default as ShowEventShow} from './ShowEventShow.jsx';
 export {default as ContactIndex} from './ContactIndex.jsx';
 export {default as ContactEdit} from './ContactEdit.jsx';
 export {default as ShowContactIndex} from './ShowContactIndex.jsx';
+export {default as ShowCampIndex} from './ShowCampIndex.jsx';
 
