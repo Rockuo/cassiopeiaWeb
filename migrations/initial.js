@@ -6,10 +6,11 @@ let db = require('../models/index');
 module.exports = {
     up: () => {
         console.log('up-..........');
-        db.User.sync({force:true}).then(() => {
-            db.Event.sync({force: true});
-            db.Info.sync({force:true})
-            db.Contact.sync({force:true})
+        db.User.sync({force:true}).then(us => {
+            console.log(us);
+            db.Event.sync({force: true}).then(x => console.log(x));
+            db.Info.sync({force:true}).then(x => console.log(x));
+            db.Contact.sync({force:true}).then(x => console.log(x));
         });
         // db.User.sync({force:true}).then(console.log('user'));
         // db.Event.sync({force:true}).then(console.log('event'));
