@@ -12,7 +12,7 @@ export default class HomeController extends BaseController {
     static routing() {
         return {
             cassiopeia_home: {type:'get', route:'/',action: 'indexAction'},
-            danger: {type:'get', route:'/danger',action: 'danger'}
+            // danger: {type:'get', route:'/danger',action: 'danger'}
         };
     }
 
