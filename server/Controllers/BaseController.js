@@ -54,7 +54,7 @@ export default class BaseController {
             component = React.createElement(All(store));
 
         res.render('index', {
-            title: 'todo',
+            title: 'Cassiopeia',
             content: renderToString(component),
             state: JSON.stringify(store.getState())
         });
