@@ -12,6 +12,7 @@ module.exports = {
             db.Event.sync({force: true}).then(x => console.log(x));
             db.Info.sync({force:true}).then(x => console.log(x));
             db.Contact.sync({force:true}).then(x => console.log(x));
+            db.Photo.sync({force:true}).then(x => console.log(x));
         })
         ;
         // db.User.sync({force:true}).then(console.log('user'));
