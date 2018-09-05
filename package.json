@@ -6,12 +6,13 @@
     "start": "env NODE_ENV=production nodemon ./bin/www --exec babel-node",
     "dev": "env NODE_ENV=development nodemon ./bin/www --exec babel-node",
     "watch": "webpack -w",
-    "generate": "sequelize migration:create --url 'mysql://root:mypassword@127.0.0.1:3306/testing'"
+    "regenerate-migration": "env NODE_ENV=development babel-node ./createMigration.js"
   },
   "dependencies": {
     "babel-plugin-transform-object-assign": "^6.22.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "connect-session-sequelize": "^5.2.2",
     "cookie-parser": "^1.4.3",
     "debug": "~2.6.0",
     "draft-js": "^0.10.1",

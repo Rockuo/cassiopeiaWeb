@@ -11,6 +11,10 @@ import passport from 'passport';
 import models from '../models';
 import bcrypt from 'bcrypt-nodejs';
 const Strategy = require('passport-local').Strategy;
+
+var session = require('express-session');
+var SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 let app = express();
 
 // view engine setup
@@ -24,8 +28,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(session({
+    secret: 'keyboard cat',
+    store: new SequelizeStore({
+        db: models.sequelize
+    }),
+    resave: false, // we support the touch method so per the express-session docs this should be set to false
+    proxy: true, // if you do SSL outside of node.
+    saveUninitialized: false
+}));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(require('express-session')({secret: 'keyboard cat', resave: false, saveUninitialized: false}));
 
 
 passport.use(new Strategy(function (username, pass, cb) {
